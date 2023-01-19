@@ -18,7 +18,8 @@ class Statement:
             ("MUST", "{"),
             ("MEND", "}"),
             ("END", ";[ \n\t\r]*"),
-            ("DIRV", "#[^\n]+\s+")
+            ("DIRV", "#[^\n]+\s+"),
+            ("OPER", "[a-zA-Z0-9_]+[\r\t ]*\n")
         ]
 
     def __state_pos(self, text, state):
@@ -61,6 +62,8 @@ class Statement:
             case "END":
                 ret = (state[1][0], state[1][0] + 1)
             case "DIRV":
+                ret = (state[1][0], state[1][1])
+            case "OPER":
                 ret = (state[1][0], state[1][1])
         return ret
 
@@ -134,4 +137,11 @@ class StatementBuilder:
     def get_next_statement(self):
         state = self.statement.get_state(self.text, self.index)
         self.index = state.get_last_index()
+        return state
+
+    def check_next_statement(self):
+        state = self.statement.get_state(self.text, self.index)
+        ii = state.get_last_index()
+        if state.get_name() == "EMPT":
+            state = self.statement.get_state(self.text, ii)
         return state

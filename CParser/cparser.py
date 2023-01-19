@@ -1,7 +1,7 @@
 import re
 
-from statement import StatementBuilder
-from asttree import AST
+from CParser.statement import StatementBuilder
+from CParser.asttree import AST
 from CInstr.cinstr import CInstrumentation
 from CInstr import settings
 
@@ -93,6 +93,8 @@ class CParser:
             return ast
         elif statementName in ["IF", "ELSE", "FOR", "WHIL", "DO"]:
             astnode.set_under(self.__ast_tree_build(statetementBuilder))
+            if statetementBuilder.check_next_statement().get_name() in ["IF", "ELSE", "FOR", "WHIL", "DO"]:
+                astnode.set_next(self.__ast_tree_build(statetementBuilder))
             return ast
         else:
             return ast
@@ -105,7 +107,7 @@ class CParser:
         text = self.__clean_text(text)
         bb = self.__get_bb(text)
         i = 0
-        out = "#include <Library/UefiAflProxy2.h>\n"
+        out = "#pragma warning(disable : 4702)\n#include <Library/UefiAflProxy2.h>\n"
         for b in bb:
             out += text[i:b[0]]
             fun = text[b[0] : b[1] + 1]
@@ -120,6 +122,7 @@ class CParser:
         out += text[i:]
         with open(file, "w") as cf:
             cf.write(out)
+
         #print(out)
         #out
 

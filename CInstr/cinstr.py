@@ -42,7 +42,10 @@ class CInstrumentation:
                 newASTnode = AST(mustAddedBegin)
                 newASTnode.set_next(astUnderNode)
                 asttree.set_under(newASTnode)
+         #   else:
+          #      pass
         self.__astModify(asttree.get_next())
+        self.__astModify(asttree.get_under())
 
     def __add_instruction_begin_info(self, asttree, instr_command):
         statement = asttree.get_statement()
@@ -73,6 +76,9 @@ class CInstrumentation:
             self.__ast_viewer(next)
 
     def instr(self, asttree):
+      #  print("///////////////////////////////")
+    #    asttree.print()
         self.__astModify(asttree)
+    #    asttree.print()
         self.__add_instruction_end_info(asttree, self.appendInitFunction)
         self.__ast_viewer(asttree.get_next())

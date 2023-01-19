@@ -2,11 +2,17 @@ import re
 
 class infParser:
     def __getSourceSectionSt(self, text):
-        match = re.finditer("\[Sources\]", text).__next__().end()
+        m = re.finditer("\[Sources\]", text)
+        for i in m:
+            match = i.end()
         return match
 
     def __getSourceSectionEn(self, text, start):
-        return re.finditer("\[[a-zA-Z]+\]", text[start:]).__next__().start() + start
+        m = re.finditer("\[[a-zA-Z]+\]", text[start:])
+        for i in m:
+            match = i.start() + start
+            break
+        return match
 
     def __getClasses(self, text):
         filePathPattern = "[\n\r\t ][a-zA-Z\/$\(\)0-9_]+.c[^p]"
@@ -15,7 +21,9 @@ class infParser:
 
     def __getDefine(self, text):
         ret= []
-        match = re.finditer("\[Defines\]", text).__next__().end()
+        mm = re.finditer("\[Defines\]", text)
+        for m in mm:
+            match = m.end()
         en = self.__getSourceSectionEn(text, match)
         defPattern = "DEFINE [a-zA-Z0-9_\- ]+="
         res = re.finditer(defPattern, text[match:en])

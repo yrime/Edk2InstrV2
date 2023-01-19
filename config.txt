@@ -1,7 +1,6 @@
 {
      	"files":
 	[
-		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Application\\EnterToBiosSetup\\EnterToBiosSetup.inf",
-		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Application\\EnterToBiosSetup\\EnterToBiosSetup.inf"
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItAuth\\ItAuth.inf"
 	]
 }
