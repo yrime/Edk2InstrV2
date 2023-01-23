@@ -15,7 +15,7 @@ if __name__ == '__main__':
     infParser = infParser()
   #  print(conf)
 
-    with open("instrfiles.txt", "w") as inst:
+    with open("instrfiles.txt", "a") as inst:
         for f in files:
             with open(f, "r") as inffile:
                 text = inffile.read()
