@@ -66,8 +66,8 @@ class CInstrumentation:
 
     def __ast_viewer(self, asttree):
         self.__ast_instrumentation(asttree)
-        if asttree.get_statement().get_name() == "RET":
-            return
+    #    if asttree.get_statement().get_name() == "RET":
+    #        return
         next = asttree.get_next()
         under = asttree.get_under()
         if under != None:
