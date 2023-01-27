@@ -19,7 +19,9 @@ class Statement:
             ("MEND", "}"),
             ("END", ";[ \n\t\r]*"),
             ("DIRV", "#[^\n]+\s+"),
-            ("OPER", "[a-zA-Z0-9_]+[:\r\t ]*\n")
+            ("OPER", "[a-zA-Z0-9_]+[:\r\t ]*\n"),
+            ("WORD", "[a-zA-Z0-9_]+ *"),
+            ("VAR",  "\(")
         ]
 
     def __state_pos(self, text, state):
@@ -65,6 +67,11 @@ class Statement:
                 ret = (state[1][0], state[1][1])
             case "OPER":
                 ret = (state[1][0], state[1][1])
+            case "WORD":
+                ret = (state[1][0], state[1][1])
+            case "VAR":
+                ind = self.__get_indexes_struct(text, state[1][0], '(', ')')
+                ret = (state[1][0], ind[1])
         return ret
 
     def __get_first_symbol(self, text, pos, sym):
