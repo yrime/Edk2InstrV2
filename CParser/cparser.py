@@ -55,7 +55,16 @@ class CParser:
                 else:
                     ignore = 0
             elif text[index + i] == '}':
-                fi = fi - 1
+                for m in a1:
+                    if ((index + i) > m.start()) and ((index + i) < m.end()):
+                        ignore = 1
+                for m in a2:
+                    if ((index + i) > m.start()) and ((index + i) < m.end()):
+                        ignore = 1
+                if ignore == 0:
+                    fi = fi - 1
+                else:
+                    ignore = 0
                 if fi == 0:
                     return index + i
             i = i + 1
