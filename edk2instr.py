@@ -18,6 +18,7 @@ if __name__ == '__main__':
         # print(sys.argv[2], sys.argv[3])
         k = rea.find(instrFile)
         if rea.find(instrFile) > 0:
+            print(instrFile)
             a = DPPChecker()
             instrFile = a.check(instrFile, inc, ccflag)
             cp.parse(instrFile)
