@@ -91,7 +91,7 @@ class CParser:
                     astnode.set_under(self.__ast_tree_build(statetementBuilder))
                 elif next_state != None and statementName not in ["MEND"]:
                     if next_state.get_name() in ["MUST"]:
-                        astnode.set_next(self.__ast_tree_build(statetementBuilder))
+                        astnode.set_under(self.__ast_tree_build(statetementBuilder))
             return ast
         elif statementName == "EMPT":
             astnode.set_next(self.__ast_tree_build(statetementBuilder))
