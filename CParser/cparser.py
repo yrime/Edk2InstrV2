@@ -115,7 +115,7 @@ class CParser:
                     if next_state.get_name() in ["MUST"]:
                         astnode.set_under(self.__ast_tree_build(statetementBuilder))
             return ast
-        elif statementName == "EMPT":
+        elif statementName in ["EMPT", "WORD"]:
             astnode.set_next(self.__ast_tree_build(statetementBuilder))
             return ast
         elif statementName in ["IF", "ELSE", "FOR", "WHIL", "DO"]:
