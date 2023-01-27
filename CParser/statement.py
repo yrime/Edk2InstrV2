@@ -7,7 +7,7 @@ class Statement:
             ("ELSE", "else[\{ \r\t\n]*"),
             ("FOR", "for[ \t\n\r]*\("),
             ("WHIL", "while[ \t\n\r]*\("),
-            ("DO", "do[ \t\n\r]*"),
+            ("DO", "do[^a-zA-Z0-9_-][ \t\n\r]*"),
             ("SWIT", "switch[ \r\t\n]*\("),
             ("CASE", "case[ \r\t\n]* [^:]+[ \n\t\r]*:"),
             ("RET", "return"),
@@ -91,6 +91,8 @@ class Statement:
             i = i + 1
 
     def get_state(self, text, i):
+        if len(text) <= i:
+            return None
         for o in self.statetment:
            # print(o)
             prog = re.compile(o[1])
@@ -141,6 +143,8 @@ class StatementBuilder:
 
     def check_next_statement(self):
         state = self.statement.get_state(self.text, self.index)
+        if state == None:
+            return state
         ii = state.get_last_index()
         if state.get_name() == "EMPT":
             state = self.statement.get_state(self.text, ii)

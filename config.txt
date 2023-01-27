@@ -1,6 +1,13 @@
 {
      	"files":
 	[
-		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItAuth\\ItAuth.inf"
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItAuth\\ItAuth.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItConfDB\\ItConfDB.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItConfDBEx\\ItConfDBEx.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItCore\\ItCore_Base.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItCore\\ItCore_Nt32.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItIntegrMgr\\ItIntegrMgr.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Driver\\ItScAuth\\ItScAuth.inf",
+		"C:\\UefiAfl\\ForVisual2\\SB_fuzzing\\InfotecsPkg\\Library\\JsonLib\\JsonLib.inf"
 	]
 }
