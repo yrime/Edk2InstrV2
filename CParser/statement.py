@@ -19,7 +19,7 @@ class Statement:
             ("MEND", "}"),
             ("END", ";[ \n\t\r]*"),
             ("DIRV", "#[^\n]+\s+"),
-            ("OPER", "[a-zA-Z0-9_]+[\r\t ]*\n")
+            ("OPER", "[a-zA-Z0-9_]+[:\r\t ]*\n")
         ]
 
     def __state_pos(self, text, state):
