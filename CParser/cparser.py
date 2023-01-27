@@ -82,7 +82,15 @@ class CParser:
 
     def __get_func_bb(self, text, indexes_bb):
         indexes_fun = []
+        directivs = list(re.finditer("#define .+\n", text))
+        ignore = 0
         for match in re.finditer("\)[ \t]*\n?[ \t]*\{", text):
+            for i in directivs:
+                if i.start() < (match.end() - 1) <= i.end():
+                    ignore = 1
+            if ignore == 1:
+                ignore = 0
+                continue
             for index in indexes_bb:
                 if (match.end() - 1) == index[0]:
                     indexes_fun.append((index[0], index[1]))
