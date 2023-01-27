@@ -38,9 +38,22 @@ class CParser:
     def __iter_bb_fin(self, text, index):
         i = 0
         fi = 0
+    #    text2 = "sdf\"sdf\"sdf\"asas\"as"
+        a1 = list(re.finditer("\"[^\"\']*\"", text))
+        a2 = list(re.finditer("'[^\'\"]'", text))
+        ignore = 0
         while (True):
             if text[index + i] == '{':
-                fi = fi + 1
+                for m in a1:
+                    if ((index + i) > m.start()) and ((index + i) < m.end()):
+                        ignore = 1
+                for m in a2:
+                    if ((index + i) > m.start()) and ((index + i) < m.end()):
+                        ignore = 1
+                if ignore == 0:
+                    fi = fi + 1
+                else:
+                    ignore = 0
             elif text[index + i] == '}':
                 fi = fi - 1
                 if fi == 0:
