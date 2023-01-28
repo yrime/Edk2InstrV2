@@ -39,7 +39,7 @@ class DPPChecker:
         out = []
         for f in include_files:
             print(f)
-            with open(f, "r", encoding="locale") as ff:
+            with open(f, "r", encoding="utf-8") as ff:
                 text = ff.read()
             out += re.findall(pattern, text)
         out = list(set(out))
