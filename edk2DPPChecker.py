@@ -38,7 +38,7 @@ class DPPChecker:
         pattern = "(?<=#define )[^\s]+(?=[\n\r\t ])"
         out = []
         for f in include_files:
-            with open(f, "r", encoding="utf-8") as ff:
+            with open(f, "r", encoding="utf-16") as ff:
                 text = ff.read()
             out += re.findall(pattern, text)
         out = list(set(out))
