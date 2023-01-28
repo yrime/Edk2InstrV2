@@ -13,7 +13,7 @@ if __name__ == '__main__':
     inc = sys.argv[3]
     forinstrfiles = sys.argv[4]
     runcmd = sys.argv[5].replace("\'","\"")
-    with open(forinstrfiles, "r") as inst:
+    with open(forinstrfiles, "r", encoding="utf-8") as inst:
         rea = inst.read().lower()
         # print(sys.argv[2], sys.argv[3])
         k = rea.find(instrFile)
