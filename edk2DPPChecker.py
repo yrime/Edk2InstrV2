@@ -1,4 +1,4 @@
-
+import io
 import sys
 import re
 import os.path
@@ -39,7 +39,7 @@ class DPPChecker:
         out = []
         for f in include_files:
             print(f)
-            with open(f, "r", encoding="cp1251") as ff:
+            with open(f, "r", encoding="locale") as ff:
                 text = ff.read()
             out += re.findall(pattern, text)
         out = list(set(out))
