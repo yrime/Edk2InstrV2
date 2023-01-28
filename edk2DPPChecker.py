@@ -42,6 +42,7 @@ class DPPChecker:
                 text = ff.read()
             out += re.findall(pattern, text)
         out = list(set(out))
+        out = []
         return out
 
 
