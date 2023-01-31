@@ -60,7 +60,7 @@ class CInstrumentation:
         statementName = statement.get_name()
         if statementName in ["MEND", "RET", "BRE", "CONT"]:
             self.__add_instruction_begin_info(asttree, self.appendFunctions)
-        elif statementName in ["MUST", "END", "CASE", "DEF"]:
+        elif statementName in ["MUST", "CASE", "DEF"]:
             self.__add_instruction_end_info(asttree, self.appendFunctions)
 
 
