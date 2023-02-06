@@ -25,6 +25,7 @@ if __name__ == '__main__':
                 instrFile = a.check(instrFile, inc, ccflag)
                 cp.parse(instrFile)
         except:
+            print("r")
             instrFile = ci
    # print(runcmd + " " + instrFile)
     subprocess.call(runcmd + " " + instrFile, shell=True)
